@@ -1,0 +1,15 @@
+<form (ngSubmit)="addPost(postForm)" #postForm="ngForm">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" placeholder="enter title" name="title" #title="ngModel" [(ngModel)]="newPost.title" required>
+        <small class="form-text text-danger" *ngIf="title.dirty && title.invalid">Title field can't be empty</small>
+    </div>
+    <div class="form-group">
+        <label>Body</label>
+        <textarea class="form-control" type="text" placeholder="enter body" name="body" #body="ngModel" [(ngModel)]="newPost.body" required></textarea>
+        <small class="form-text text-danger" *ngIf="body.dirty && body.invalid">Body field can't be empty</small>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark" [disabled]="postForm.pristine || postForm.invalid">Add Post!</button>
+    </div>
+</form>
